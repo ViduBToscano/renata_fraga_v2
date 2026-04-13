@@ -1,0 +1,154 @@
+/* ============================================================
+   COMPONENTS — Componentes reutilizáveis
+  
+============================================================ */
+
+/* ============================================================
+   TOP BAR
+============================================================ */
+#top-bar {
+  background: linear-gradient(
+    110deg,
+    #e8c9ae 0%,
+    #e8c9ae 25%,
+    #f7e8d5 38%,
+    #fef6ec 48%,
+    #f7e8d5 58%,
+    #e8c9ae 75%,
+    #e8c9ae 100%
+  );
+  background-size: 300% auto;
+  animation: rf-topbar-shimmer 6s ease-in-out infinite;
+
+  width: 100%;
+  padding: 10px 1rem; /* Padrão Mobile */
+  text-align: center;
+  font-family: var(--font-primary);
+  font-size: 11px; /* Padrão Mobile */
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: 0.8px;
+}
+
+/* ============================================================
+   BTN WHATSAPP
+============================================================ */
+/* Padrão Mobile: Blocos inteiros para área de toque (Polegar) */
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  background-color: var(--color-whatsapp);
+  color: #fff;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: var(--radius-pill);
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-whatsapp);
+  transition:
+    background-color 0.25s ease,
+    transform 0.2s ease,
+    box-shadow 0.25s ease;
+
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1rem 1.25rem;
+  min-height: 54px;
+  font-size: 1rem;
+}
+
+.btn-whatsapp:hover {
+  background-color: var(--color-whatsapp-dk);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-whatsapp-hover);
+}
+
+.btn-whatsapp svg {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+}
+
+/* Padrão Mobile para Variante Grande */
+.btn-whatsapp--lg {
+  font-size: 1rem;
+  padding: 1rem 1.5rem;
+}
+
+.btn-whatsapp--lg svg {
+  width: 22px;
+}
+
+/* ============================================================
+   BADGE PILL
+============================================================ */
+.badge-pill {
+  display: inline-block;
+  background: var(--color-badge-bg);
+  color: #faf7f2;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 2.82px;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  border-radius: var(--radius-pill);
+}
+
+/* ============================================================
+   ORNAMENT DIVIDER
+============================================================ */
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-block: 1.5rem;
+}
+
+.ornament-divider::before,
+.ornament-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(164, 211, 162, 0.6),
+    transparent
+  );
+}
+
+.ornament-divider span {
+  color: var(--color-accent);
+  font-size: 1.1rem;
+}
+
+/* ============================================================
+   AJUSTES PARA DESKTOP
+============================================================ */
+@media (min-width: 768px) {
+  #top-bar {
+    font-size: 14px;
+    letter-spacing: 1.44px;
+    padding: 12px 1.25rem;
+  }
+
+  .btn-whatsapp {
+    width: auto;
+    font-size: 1.05rem;
+    padding: 1rem 2.2rem;
+  }
+
+  .btn-whatsapp--lg {
+    font-size: 1.2rem;
+    padding: 1.4rem 3rem;
+  }
+
+  .btn-whatsapp--lg svg {
+    width: 28px;
+    height: 28px;
+  }
+}

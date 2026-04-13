@@ -1,0 +1,39 @@
+{
+  "site": {
+    "url": "https://renatafraga.com",
+    "lang": "pt-BR",
+    "locale": "pt_BR"
+  },
+  "seo": {
+    "title": "Renata Fraga Hair Spa — Grupo VIP | Saúde Capilar de Excelência",
+    "description": "Entre no grupo VIP da Renata Fraga e transforme sua saúde capilar com orientação especializada. Tricologista e terapeuta capilar com 14 anos de experiência e mais de 10 mil transformações.",
+    "keywords": "saúde capilar, tricologista, terapeuta capilar, grupo vip whatsapp, cuidados com cabelo, couro cabeludo, Renata Fraga, Reline cosméticos"
+  },
+  "og": {
+    "title": "Renata Fraga Hair Spa — Grupo VIP",
+    "description": "Saúde capilar de excelência. Entre para o grupo exclusivo com acompanhamento profissional.",
+    "image": "https://renatafraga.com/assets/images/og/og-cover.jpg",
+    "image_width": 1200,
+    "image_height": 630,
+    "type": "website"
+  },
+  "schema": {
+    "type": "Person",
+    "name": "Renata Fraga",
+    "jobTitle": "Tricologista e Terapeuta Capilar",
+    "description": "Especialista em saúde capilar com 14 anos de experiência e mais de 10 mil transformações.",
+    "url": "https://renatafraga.com",
+    "sameAs": [
+      "https://instagram.com/renatafraga"
+    ]
+  },
+  "performance": {
+    "preload_font": "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap",
+    "hero_image": "/assets/images/hero/hero-renata-fraga.webp",
+    "og_image": "/assets/images/og/og-cover.jpg"
+  },
+  "whatsapp": {
+    "group_url": "https://chat.whatsapp.com/SEU_LINK_AQUI",
+    "note": "Substituir SEU_LINK_AQUI pelo link real do grupo VIP"
+  }
+}

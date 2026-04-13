@@ -1,0 +1,157 @@
+/* ============================================================
+   ANIMATIONS
+   Todos os keyframes do projeto em um único lugar.
+   Controlado por JS via classList e IntersectionObserver.
+   REGRA: usar apenas opacity e transform (GPU-accelerated).
+============================================================ */
+
+/* ---- Fade-in base ---------------------------------------- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- Fade-in group (filhos em cascata) ------------------- */
+.fade-in-group > * {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.fade-in-group.visible > *:nth-child(1) {
+  transition-delay: 0.05s;
+}
+.fade-in-group.visible > *:nth-child(2) {
+  transition-delay: 0.15s;
+}
+.fade-in-group.visible > *:nth-child(3) {
+  transition-delay: 0.25s;
+}
+.fade-in-group.visible > *:nth-child(4) {
+  transition-delay: 0.35s;
+}
+.fade-in-group.visible > *:nth-child(5) {
+  transition-delay: 0.45s;
+}
+.fade-in-group.visible > *:nth-child(6) {
+  transition-delay: 0.55s;
+}
+
+.fade-in-group.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- Top Bar shimmer ------------------------------------- */
+@keyframes rf-topbar-shimmer {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+/* ---- Section premium reveal (scale + fade) --------------- */
+@keyframes rf-reveal {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ---- Counter number pop ---------------------------------- */
+@keyframes rf-count-pop {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---- Process step activation ----------------------------- */
+@keyframes rf-step-activate {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.3;
+  }
+  65% {
+    transform: scale(1.06);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Ícone do step ganha glow ao ativar */
+@keyframes rf-icon-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(36, 106, 85, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(36, 106, 85, 0.18);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(36, 106, 85, 0);
+  }
+}
+
+/* ---- WhatsApp bubble entrada ----------------------------- */
+@keyframes rf-bubble-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ---- Typing dots bounce ---------------------------------- */
+@keyframes rf-dot-bounce {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-5px);
+    opacity: 1;
+  }
+}
+
+/* ---- Hero headline micro-drift (breathing premium) ------- */
+@keyframes rf-hero-text-drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* ---- Stat number revealed -------------------------------- */
+.stat-number.is-counting {
+  animation: rf-count-pop 0.5s ease forwards;
+}

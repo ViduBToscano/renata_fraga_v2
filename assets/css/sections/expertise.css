@@ -1,0 +1,273 @@
+/* ============================================================
+   SECTION: EXPERTISE — Experiência + Números + Método
+============================================================ */
+
+#expertise {
+  background-color: var(--color-bg-alt);
+  color: var(--color-text);
+  position: relative;
+  overflow: hidden;
+}
+
+#expertise::before {
+  content: "";
+  position: absolute;
+  top: -25%;
+  right: -10%;
+  width: 60vw;
+  height: 60vw;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(36, 106, 85, 0.12) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+#expertise::after {
+  content: "";
+  position: absolute;
+  bottom: -20%;
+  left: -5%;
+  width: 45vw;
+  height: 45vw;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(36, 106, 85, 0.12) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.expertise-text-center {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 3rem 1.25rem 2.5rem; /* Padrão Mobile */
+}
+
+.expertise-headline {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  color: var(--color-text);
+  line-height: 1.25;
+  margin-bottom: 1.5rem;
+}
+
+.expertise-body {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  line-height: 1.75;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+/* Padrão Mobile: Gap menor */
+.stats-bar {
+  width: 100%;
+  background: linear-gradient(
+    173deg,
+    rgb(20, 61, 49) 0%,
+    rgb(30, 90, 73) 48%,
+    rgb(18, 56, 45) 100%
+  );
+  padding: 2rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  text-align: center;
+  color: #ffffff;
+}
+
+.stat-number {
+  display: block;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: clamp(2rem, 8vw, 2.75rem);
+  line-height: 1;
+  transition: opacity 0.3s ease;
+}
+
+.stat-number.is-counting {
+  animation: rf-count-pop 0.5s ease forwards;
+}
+
+.stat-label {
+  display: block;
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-top: 0.4rem;
+  opacity: 0.85;
+}
+
+.process-wrap {
+  text-align: center;
+  padding: 4rem 1.25rem 2rem;
+}
+
+.process-title {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  color: var(--color-text);
+  margin-top: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Padrão Mobile: 2 colunas, sem linhas conectoras complexas */
+.process-grid {
+  max-width: 1060px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  position: relative;
+  align-items: start;
+}
+
+.process-grid::before,
+.process-grid::after {
+  display: none; /* Oculto no mobile */
+}
+
+/* Padrão Mobile: Sem animação sequencial complexa que penaliza a CPU do telemóvel */
+.process-step {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.process-icon {
+  width: 100px; /* Padrão Mobile */
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e8c9ae, #c9956c);
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 0 rgba(36, 106, 85, 0);
+}
+
+.process-label {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  line-height: 1.4;
+}
+
+.result-callout {
+  background: rgba(36, 106, 85, 0.08);
+  padding: 2.5rem 1.25rem;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.result-callout__text {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-size: clamp(1rem, 4vw, 1.4rem);
+  color: var(--color-accent-dk);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.expertise-cta-wrap {
+  text-align: center;
+  padding: 3rem 1.25rem;
+}
+
+/* ---- Ajustes para Desktop ---- */
+@media (min-width: 680px) {
+  .expertise-text-center {
+    padding: 4rem 1.25rem 3.5rem;
+  }
+
+  .stats-bar {
+    gap: 5rem;
+    padding: 2rem 1.25rem;
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .process-grid::before {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 60px;
+    left: 12.5%;
+    right: 12.5%;
+    height: 0;
+    border-top: 2px dashed rgba(36, 106, 85, 0.22);
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .process-grid::after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 60px;
+    left: 12.5%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      var(--color-accent),
+      var(--color-accent-lt)
+    );
+    z-index: 1;
+    border-radius: 2px;
+    transition: width 1.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+  }
+
+  .process-grid.is-active::before {
+    opacity: 1;
+  }
+  .process-grid.is-active::after {
+    width: 75%;
+  }
+
+  .process-step {
+    opacity: 0;
+    transform: scale(0.88);
+    transition:
+      opacity 0.45s ease,
+      transform 0.45s ease;
+  }
+
+  .process-step.is-active {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .process-step.is-active .process-icon {
+    animation:
+      rf-step-activate 0.5s ease forwards,
+      rf-icon-glow 1s ease 0.4s forwards;
+  }
+
+  .process-icon {
+    width: 121px;
+    height: 121px;
+  }
+}

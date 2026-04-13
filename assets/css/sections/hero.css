@@ -1,0 +1,151 @@
+/* ============================================================
+   SECTION: HERO
+============================================================ */
+
+#hero {
+  position: relative;
+  background-color: #000;
+  overflow: hidden;
+  min-height: 100svh; /* Padrão Mobile: 100% da viewport visível */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  text-align: center; /* Padrão Mobile */
+}
+
+/* Background photo full-bleed */
+#hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../../images/hero/hero-renata-fraga.webp");
+  background-size: cover;
+  background-position: center center;
+  z-index: 0;
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 40%,
+    rgba(0, 0, 0, 0.85) 68%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    black 40%,
+    rgba(0, 0, 0, 0.85) 68%,
+    transparent 100%
+  );
+}
+
+/* Gradient overlay mais denso como padrão (Mobile) para garantir legibilidade */
+#hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.28) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.66) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-bottom-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, #000);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  padding-block: 2.5rem 5rem; /* Padrão Mobile */
+  width: 100%;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 100%; /* Padrão Mobile */
+}
+
+.hero-headline {
+  font-size: clamp(1.9rem, 7vw, 2.8rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.22;
+  margin-bottom: 1.25rem;
+  animation: rf-hero-text-drift 9s ease-in-out infinite; /* Mobile duration */
+  will-change: transform;
+}
+
+.hero-bio {
+  font-size: 0.95rem; /* Padrão Mobile */
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.7;
+  margin-bottom: 1.75rem;
+}
+
+.hero-text .btn-whatsapp {
+  width: 100%; /* Padrão Mobile: ocupa largura total */
+  min-height: 54px;
+}
+
+.cta-sub {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ---- Ajustes para Desktop (Min-Width 768px) ---- */
+@media (min-width: 768px) {
+  #hero {
+    min-height: 820px;
+    text-align: left;
+  }
+
+  #hero::after {
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.52) 0%,
+      rgba(0, 0, 0, 0.22) 45%,
+      transparent 75%
+    );
+  }
+
+  .hero-inner {
+    padding-block: 5rem;
+  }
+
+  .hero-text {
+    max-width: 520px;
+  }
+
+  .hero-headline {
+    animation-duration: 6s;
+  }
+
+  .hero-bio {
+    font-size: 1.05rem;
+    max-width: 46ch;
+  }
+
+  .hero-text .btn-whatsapp {
+    width: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-headline {
+    animation: none;
+  }
+}

@@ -4,9 +4,10 @@
 
 #reline {
   background: var(--color-bg);
-  padding: 3rem 1.25rem 2rem; /* Padrão Mobile */
+  padding: 3.5rem 1.25rem 0;
   position: relative;
-  overflow: clip;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 #reline::before {
@@ -17,11 +18,7 @@
   width: 60vw;
   height: 60vw;
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(36, 106, 85, 0.12) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle, rgba(36, 106, 85, 0.12) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -34,16 +31,16 @@
   width: 45vw;
   height: 45vw;
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(36, 106, 85, 0.12) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle, rgba(36, 106, 85, 0.12) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
 
-/* Padrão Mobile: Layout de Coluna Unida Segura */
+/* ====================================================
+   MOBILE (default)
+   Ordem: texto → imagem+elipse.
+   Elipse fica na base; sangra direto no #community.
+======================================================= */
 .reline-grid {
   max-width: 1100px;
   margin: 0 auto;
@@ -55,44 +52,21 @@
   z-index: 1;
 }
 
-.reline-image-wrap {
-  position: relative;
-  width: 100%;
-  overflow: visible;
-}
-
-.reline-ellipse {
-  position: absolute;
-  width: min(520px, 85vw);
-  height: min(520px, 85vw);
-  border-radius: 50%;
-  background: var(--color-bg-alt);
-  top: 65%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 0;
-}
-
-/* Padrão Mobile: Imagem a 100% (Previne Overflow Nativo) */
-.reline-img {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto 1.5rem auto;
-  display: block;
-  position: relative;
-  z-index: 1;
-
-  -webkit-mask-image: linear-gradient(to bottom, black 45%, transparent 92%);
-  mask-image: linear-gradient(to bottom, black 45%, transparent 92%);
-}
-
 .reline-text {
-  text-align: center; /* FIX: Texto centralizado no mobile */
-  padding: 0 0 2rem;
+  order: -1;
+  text-align: center;
+  padding: 0 0 2.5rem;
   width: 100%;
-  display: flex; /* FIX: Alinha as badges ao centro */
+  display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+/* position:static → elipse relativa a .reline-grid */
+.reline-image-wrap {
+  order: 0;
+  position: static;
+  width: 100%;
 }
 
 .reline-text .badge-pill {
@@ -102,10 +76,10 @@
 .reline-headline {
   font-family: var(--font-primary);
   font-weight: 700;
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-size: clamp(1.8rem, 7vw, 2.6rem);
   color: var(--color-text);
-  line-height: 1.25;
-  margin-bottom: 1.5rem;
+  line-height: 1.22;
+  margin-bottom: 1.25rem;
 }
 
 .reline-body {
@@ -116,52 +90,84 @@
   line-height: 1.75;
 }
 
-/* ---- Ajustes para Desktop ---- */
+/* Elipse mobile: centro na borda inferior do grid */
+.reline-ellipse {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--color-bg-alt);
+  z-index: 0;
+  width: min(360px, 92vw);
+  height: min(360px, 92vw);
+  top: auto;
+  bottom: calc(0px - min(360px, 92vw) / 2);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Foto mobile: dissolve na base → elipse aparece */
+.reline-img {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  display: block;
+  position: relative;
+  z-index: 1;
+  -webkit-mask-image: linear-gradient(to bottom, black 45%, transparent 88%);
+  mask-image: linear-gradient(to bottom, black 45%, transparent 88%);
+}
+
+
+/* ====================================================
+   DESKTOP (>= 768px) — 2 colunas
+   Elipse relativa a .reline-image-wrap.
+   Centro ancorado na borda inferior da coluna da imagem.
+======================================================= */
 @media (min-width: 768px) {
   #reline {
-    padding: 5rem 1.25rem;
+    padding: 5rem 1.25rem 0;
   }
 
   .reline-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 5rem;
-  }
-
-  .reline-ellipse {
-    left: 40%;
-  }
-
-  .reline-img {
-    width: 130%; /* Expansão controlada para desktop */
-    margin-left: -15%;
-    margin-bottom: -5rem;
-
-    -webkit-mask-image:
-      linear-gradient(
-        to right,
-        transparent 0%,
-        black 12%,
-        black 88%,
-        transparent 100%
-      ),
-      linear-gradient(to bottom, black 0%, black 55%, transparent 95%);
-    -webkit-mask-composite: source-in;
-    mask-image:
-      linear-gradient(
-        to right,
-        transparent 0%,
-        black 12%,
-        black 88%,
-        transparent 100%
-      ),
-      linear-gradient(to bottom, black 0%, black 55%, transparent 95%);
-    mask-composite: intersect;
+    align-items: center;
   }
 
   .reline-text {
-    text-align: right; /* Restaura alinhamento no desktop */
-    display: block; /* Reseta o flexbox */
+    order: 0;
+    text-align: right;
+    display: block;
     padding: 0;
   }
+
+  .reline-image-wrap {
+    order: 0;
+    position: relative;
+    overflow: visible;
+  }
+
+  .reline-ellipse {
+    width: min(520px, 45vw);
+    height: min(520px, 45vw);
+    top: auto;
+    bottom: calc(0px - min(520px, 45vw) / 2);
+    left: 40%;
+    transform: translateX(-50%);
+  }
+
+  .reline-img {
+    width: 130%;
+    margin-left: -15%;
+    margin-bottom: -5rem;
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%),
+      linear-gradient(to bottom, black 0%, black 55%, transparent 95%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%),
+      linear-gradient(to bottom, black 0%, black 55%, transparent 95%);
+    mask-composite: intersect;
+  }
+  
 }

@@ -5,21 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "npx live-server --port=3000 --open=index.html",
-
-    "build:css": "npx clean-css-cli -o dist/style.min.css assets/css/base.css assets/css/layout.css assets/css/animations.css assets/css/components.css assets/css/sections/hero.css assets/css/sections/social-proof.css assets/css/sections/expertise.css assets/css/sections/videos.css assets/css/sections/reline.css assets/css/sections/community.css assets/css/sections/cta-footer.css",
-
-    "build:js": "npx terser assets/js/utils.js assets/js/animations.js assets/js/scroll.js assets/js/main.js -o dist/main.min.js --compress --mangle",
-
-    "build": "npm run build:css && npm run build:js && echo 'Build concluído em /dist'",
-
     "lint:css": "npx stylelint 'assets/css/**/*.css'",
-
     "test:a11y": "npx @axe-core/cli http://localhost:3000",
-
     "lighthouse": "npx lighthouse http://localhost:3000 --output html --output-path ./lighthouse-report.html --view"
-  },
-  "devDependencies": {
-    "clean-css-cli": "^5.6.3",
-    "terser": "^5.36.0"
   }
 }

@@ -90,8 +90,9 @@
   line-height: 1.75;
 }
 
-/* Elipse mobile: centro na borda inferior do grid */
+/* Elipse mobile: CORREÇÃO - Oculta no mobile para limpeza de interface */
 .reline-ellipse {
+  display: none; 
   position: absolute;
   border-radius: 50%;
   background: var(--color-bg-alt);
@@ -147,7 +148,9 @@
     overflow: visible;
   }
 
+  /* CORREÇÃO: Mostra a elipse novamente apenas em ecrãs grandes */
   .reline-ellipse {
+    display: block; 
     width: min(520px, 45vw);
     height: min(520px, 45vw);
     top: auto;

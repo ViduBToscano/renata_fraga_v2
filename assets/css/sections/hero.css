@@ -20,7 +20,8 @@
   inset: 0;
   background-image: url("../../images/hero/hero-renata-fraga.webp");
   background-size: cover;
-  background-position: center center;
+  /*  85% para trazer a direita para o centro no mobile. */
+  background-position: 85% top; 
   z-index: 0;
 
   -webkit-mask-image: linear-gradient(
@@ -111,6 +112,11 @@
   #hero {
     min-height: 820px;
     text-align: left;
+  }
+
+  /* No desktop, como a imagem é larga, podemos voltar a centrar normalmente */
+  #hero::before {
+    background-position: center center;
   }
 
   #hero::after {

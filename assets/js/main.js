@@ -32,6 +32,17 @@
 
     /* 6. Simulação de conversa no mockup WhatsApp */
     if (RF.initWappChat) RF.initWappChat();
+
+    /* 7. Conversão Google Ads no clique dos botões do Grupo VIP
+       Sem passar a URL: os links abrem em nova aba (target="_blank"),
+       então a página atual não precisa ser redirecionada. */
+    document.querySelectorAll(".btn-whatsapp").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (typeof window.gtag_report_conversion === "function") {
+          window.gtag_report_conversion();
+        }
+      });
+    });
   }
 
   /* Garante execução após o DOM estar pronto */
